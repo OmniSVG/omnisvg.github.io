@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="OmniSVG: A Unified Scalable Vector Graphics Generation Model">
+    <meta name="keywords" content="Muliti-modal, SVG Generation, Anime">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="STD7CbpZGbnFAizPPZgrpJu7WrW0DQMVRmLU_BeC5WU" />
+    <title>OmniSVG: A Unified Scalable Vector Graphics Generation Model</title>
+
+    <!--Global site tag (gtag.js) Google Analytics -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
+    />
+    <link rel="stylesheet" href="./staticcss/index.css" />
+    <link rel="icon" href="./staticimages/test3.png" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script defer src="./staticjs/fontawesome.all.min.js"></script>
+    <script src="./staticjs/bulma-slider.min.js"></script>
+    <script src="./staticjs/index.js"></script>
+
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"
+    ></script>
+    <style>
+        body {
+          margin: auto;
+          font-family: Arial, sans-serif;
+        }
+  
+        nav {
+          position: auto;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: ghostwhite;
+          z-index: 100;
+          box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+        }
+  
+        nav ul {
+          padding: 0;
+          margin: auto;
+          list-style: none;
+          display: flex;
+          justify-content: center;
+        }
+  
+        nav ul li {
+          margin: auto;
+        }
+  
+        nav ul li a {
+          display: block;
+          padding: 5px;
+          /*      color: #fff;*/
+          text-decoration: none;
+          transition: background-color 0.3s;
+        }
+  
+        nav ul li a:hover {
+          background-color: #555;
+        }
+  
+        /* iframe 容器 */
+        .iframe-container {
+          position: relative;
+          display: inline-block;
+        }
+  
+        /* 提示器 */
+        .tooltip {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          padding: 10px;
+          background-color: #333;
+          color: #fff;
+          font-size: 12px;
+          white-space: nowrap;
+          transform: translate(-50%, -50%);
+          visibility: visible;
+          opacity: 1;
+          transition: visibility 0.2s, opacity 0.2s;
+        }
+  
+        /* 鼠标悬停在 iframe 容器时隐藏提示器 */
+        .iframe-container:hover .tooltip {
+          visibility: hidden;
+          opacity: 0;
+        }
+  
+        .title {
+          font-size: 41px;
+        }
+  
+        /*  teaser font-size  */
+        .teaserTitle {
+          font-size: 76px;
+        }
+  
+        .subTeaserTitle {
+          font-size: 15px;
+        }
+  
+        .carousel-indicators {
+          bottom: -26px;
+        }
+  
+        .carousel-control.left,
+        .carousel-control.right {
+          background-image: none !important;
+          filter: none !important;
+          width: 20px;
+        }
+  
+        .columns {
+          display: flex;
+          flex-wrap: wrap;
+        }
+  
+        .column {
+          flex: 1;
+          min-width: 150px;
+        }
+  
+        .carousel-indicators ol {
+          width: 100%;
+        }
+  
+        .carousel-indicators li {
+          height: 3px !important;
+          border-radius: 0px !important;
+          width: 25%;
+        }
+      </style>
+
+    <style>
+		.render_wrapper {
+			position: relative;
+            height: 300px;
+         }
+        .render_wrapper_small {
+			position: relative;
+            height: 200px;
+         }
+		.render_div {
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+        #interpolation-image-wrapper-car{
+            text-align: center;
+        }
+        #interpolation-image-wrapper-chair{
+            text-align: center;
+        }
+        .nested-columns {
+            margin-bottom: 0 !important;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-0 publication-title">
+                        OmniSVG: A Unified Scalable Vector Graphics Generation Model <br />
+                        </h1>
+            
+                        <div class="is-size-4 publication-authors">
+                            <span class="author-block">
+                                <a href="https://yiyingyang12.github.io/yiyingyang.github.io/">Yiying Yang</a><sup>1,2*</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://wchengad.githu.io">Wei Cheng</a><sup>2*</sup>,</span>
+                            <span class="author-block">
+                                <a href="https://ch3cook-fdu.github.io/">Sijin Chen</a><sup>1</sup>,</span>
+                            <span class="author-block">
+                              <a href="https://scholar.google.com/citations?user=tgDc0fsAAAAJ&hl=en">Xianfang Zeng</a><sup>2</sup>,</span>
+                            </span>
+                        </div>
+                        <div class="is-size-4 publication-authors">
+                            <span class="author-block">
+                              <a href="https://kebii.github.io/">Jiaxu Zhang</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://aoliao12138.github.io/">Liao Wang</a><sup>2</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://www.skicyyu.org/">Gang Yu</a><sup>2&ddagger;</sup>,</span>
+                            <span class="author-block">
+                                <a href="http://xingjunma.com/">Xinjun Ma</a><sup>1&ddagger;</sup>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://fvl.fudan.edu.cn/">Yu-Gang Jiang</a><sup>1</sup>
+                            </span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>*</sup>Equal Contribution,</span>
+                            <span class="author-block"><sup>&ddagger;</sup>Correspondence Authors</span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>Fudan University,</span>
+                            <span class="author-block"><sup>2</sup>StepFun</span>
+                        </div>
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a class="external-link button is-normal is-rounded is-dark" href="https://arxiv.org/abs/xxxx.xxxxx">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+
+
+                                <!--Github Link. -->
+                                <span class="link-block">
+                                    <a href="" class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github" style="color: white;"></i>
+                                        </span>
+                                        <span>Code</span>
+                                    </a>
+                                </span>
+                                <!--Weights Link. -->
+                                <span class="link-block">
+                                    <a href="https://huggingface.co" class="external-link button is-normal is-rounded" title="Coming Soon" style="background-color: gray; color: white;">
+                                        <span class="icon">
+                                            <img src="https://huggingface.co/front/assets/huggingface_logo.svg" alt="Hugging Face Logo" style="width: 20px; height: 20px; filter: grayscale(100%);">
+                                        </span>
+                                        <span>Weights</span>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--3.1 Banner -->
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered" style="margin-top: -20px">
+            <video src="./assets/OmniSVG-main-demo-1080.mp4" width="100%" autoplay loop muted playsinline></video>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section"></section>
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered" style="margin-top: -80px">
+        <div class="column is-four-fifths">
+          <h2 class="title is-2">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Scalable Vector Graphics (SVG) is an important image format used in graphic design because of their resolution independence and editability. 
+              The study of generating high-quality SVG has continuously drawn attention from both designers and researchers in the AIGC community. 
+              However, existing methods either produces unstructured outputs with huge computational cost or is limited to generating monochrome icons of over-simplified structures. 
+              To produce high-quality and complex SVG, we propose OmniSVG, a unified framework that leverages pretrained Vision-Language Models (VLMs) for end-to-end multimodal SVG generation. 
+              By parameterizing SVG commands and coordinates into discrete tokens, OmniSVG decouples structural logic from low-level geometry for efficient 
+              training while maintaining the expressiveness of complex SVG structure. 
+              To further advance the development of SVG synthesis, we introduce MMSVGBench, a multimodal dataset with two million richly annotated SVG assets, 
+              along with a standardized evaluation protocol for conditional SVG generation tasks. Extensive results show that OmniSVG outperforms existing methods, 
+              setting a new benchmark for AI-driven vector graphics in professional design workflows.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+        <!--3.2 Image-to-Texture Results -->
+        <section class="hero" id="teaser" style="margin-bottom: 50px; margin-top: 50px;">
+            <div class="container is-max-desktop">
+            <!--Overview. -->
+            <div class="columns is-centered" style="margin-top: 15px">
+                <div class="column is-full-width">
+                    <h2 class="title is-4">Method Overview</h2>
+                    <div class="columns is-centered" style="text-align: center">
+                        <div class="column" style="align-self: center">
+                            <img src="./assets/OmniSVG-teaser.jpg" alt="sequencing_small">
+                        </div>
+                    </div>
+                    <div class="content has-text-justified" style="padding-top: 15px">
+                      OmniSVG is capable of progressively generating high-quality SVGs across a wide spectrum of complexity — from simple icons to intricate anime characters. It demonstrates remarkable versatility through multiple generation modalities, including Text-to-SVG, Image-to-SVG, and Image-Prompted SVG, making it a powerful and flexible solution for diverse creative tasks.
+                    </div>
+                </div>
+            </div>
+            </div>
+          </section>
+
+    <section class="section">
+        <div class="container is-max-desktop"  style="margin-top: 30px;">
+            <h3 class="title is-4">Generation Process of OmniSVG</h3>
+            <div>
+                <section class="section" style="overflow:hidden">
+                    <div class="container">
+                        <div id="post_images" class="carousel">
+                            <div class="item-1">
+                                <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                                    <source src="./assets/OmniSVG-demo-gen-proc-anime-1080.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="item-2">
+                                <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                                    <source src="./assets/OmniSVG-demo-gen-proc-illustration-1080.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="item-3">
+                                <video poster="" autoplay="" muted loop="" style="pointer-events: none;">
+                                    <source src="./assets/OmniSVG-demo-gen-proc-icon-1080.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+                <script>
+                    bulmaCarousel.attach('#post_images', {
+                          slidesToScroll: 1,
+                          slidesToShow: 1,
+                          loop: true,
+                    });
+                </script>
+            </div>
+
+            <div class="columns is-centered" style="margin-top: 20px">
+                <div class="column is-full-width">
+                    <h2 class="title is-4">Comparison with SOTA methods</h2>
+                    <h3 class="title is-5">Text-to-SVG</h3>
+                    <div class="content has-text-justified">
+                    </div>
+                    <div class="columns is-centered">
+                      <div class="column" style="align-self: center">
+                        <img src="./assets/OmniSVG-t2svg.jpg" alt="sequencing_small">
+                    </div>
+                    </div>
+                    <h3 class="title is-5">Image-to-SVG</h3>
+                    <div class="content has-text-justified">
+                    </div>
+                    <div class="columns is-centered">
+                      <div class="column" style="align-self: center">
+                        <img src="./assets/OmniSVG-i2svg.jpg" alt="sequencing_small">
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3">Related Links</h2>
+
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>We thank the following excellent open-source works:</b>
+                        </p>
+                        <p>
+                            <a href="https://mv-dream.github.io/"><b>IconShop</b></a>: is the first advanced work that leverages LLMs to generate monochrome, icon-level SVGs. We referred to its parametric implementation.
+                        </p>
+                        <p>
+                          <b>Here is the list of highly related concurrent works:</b>
+                      </p>
+                        <p></p>
+                            <a href="https://texturepaper.github.io/TEXTurePaper/"><b>LLM4SVG</b></a>: treats SVG corodinates as number strings and predicts decimal part for higher spatial accuracy.
+                        </p>
+                        <p>
+                            <a href="https://github.com/LIU-Yuxin/SyncMVD"><b>StarVector</b></a>: equips LLM with a image encoder for Image-to-SVG generation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+      </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre>
+<code>@article{yang2025omnisvg,
+  title={OmniSVG: A Unified Scalable Vector Graphics Generation Model}, 
+  author={Yiying Yang and Wei Cheng and Sijin Chen and Xianfang Zeng and Jiaxu Zhang and Liao Wang and Gang Yu and Xinjun Ma and Yu-Gang Jiang},
+  journal={arXiv preprint arxiv:xxxx.xxxxx},
+  year={2025}
+}
+</code></pre>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p style="text-align:center">
+                            Source code mainly borrowed from <a href="https://keunhong.com/">Keunhong Park</a>'s <a
+                                href="https://nerfies.github.io/">Nerfies website</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+<!--   <script src="js/index.js"></script>-->
+
+</body>
+
+</html>
